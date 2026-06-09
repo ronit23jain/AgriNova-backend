@@ -1,5 +1,5 @@
-tensorflow==2.14
+tensorflow==2.15.0
+numpy==1.26.4
 pillow
 flask
 flask-cors
-numpy
