@@ -12,6 +12,7 @@ import cors from 'cors';
 import authRoute from './routes/authRoute';
 import axios from 'axios';
 import agmarknetRoute from "./routes/agmarknetRoute";
+import weatherRoute from "./routes/weatherRoute";
 
 dotenv.config();
 
@@ -28,7 +29,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use('/api/auth', authRoute);
 app.use("/api/agmarknet", agmarknetRoute);
-
+app.use("/api/weather", weatherRoute);
 app.post('/predict', upload.single('file'), async (req: Request, res: Response) => {
     if (!req.file) {
         return res.status(400).json({ error: 'No file uploaded' });

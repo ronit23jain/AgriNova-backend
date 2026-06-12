@@ -17,13 +17,10 @@ export const getCommodities = async (
     );
 
     res.json(response.data);
-  } catch (error: any) {
-  console.log(error.response?.data);
-  console.log(error.response?.status);
-
-  res.status(500).json({
-    success: false,
-    message: error.message,
-  });
-}
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch commodities",
+    });
+  }
 };
