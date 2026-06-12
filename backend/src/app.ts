@@ -11,10 +11,12 @@ import errorHandling from './middleware/errorHandling';
 import cors from 'cors';
 import authRoute from './routes/authRoute';
 import axios from 'axios';
+import agmarknetRoute from "./routes/agmarknetRoute";
 
 dotenv.config();
 
 const app = express();
+const apiKey = process.env.AGMARKNET_API_KEY;
 const port = process.env.PORT || 6090;
 
 const upload = multer({ dest: 'uploads/' });
@@ -25,6 +27,7 @@ app.use(cors());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use('/api/auth', authRoute);
+app.use("/api/agmarknet", agmarknetRoute);
 
 app.post('/predict', upload.single('file'), async (req: Request, res: Response) => {
     if (!req.file) {
